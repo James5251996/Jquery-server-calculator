@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weekend Calculator</title>
+    <script src="./vendors/jquery.js"></script>
+    <script src="./scripts/client.js"></script>
+    <link rel="stylesheet" href="./styles/style.css">
+</head>
+<body>
+    <h1>Server Side Calculator</h1>
+    <div>
+        <input type="text" placeholder="first number" id="userInputOne">
+        <input type="text" placeholder="second number" id="UserInputTwo">
+        <button id="clearBtn">C</button>
+    </div>
+    <div>
+        <button class="numberBtn">7</button>
+        <button class="numberBtn">8</button>
+        <button class="numberBtn">9</button>
+        <button class="operatorBtn">+</button>
+    </div>
+    <div>
+        <button class="numberBtn">4</button>
+        <button class="numberBtn">5</button>
+        <button class="numberBtn">6</button>
+        <button class="operatorBtn">-</button>
+    </div>
+    <div>
+        <button class="numberBtn">1</button>
+        <button class="numberBtn">2</button>
+        <button class="numberBtn">3</button>
+        <button class="operatorBtn">*</button>
+    </div>
+    <div>
+        <button class="numberBtn">0</button>
+        <button class="numberBtn">.</button>
+        <button class="equalBtn">=</button>
+        <button class="operatorBtn">/</button>
+    </div>
+    <div id="displayTotal">
+        Where total gets diplayed
+    </div>
+    <ul id="historicalInputs">
+        <li>where historical inputs get posted</li>
+    </ul>
+</body>
+</html>
