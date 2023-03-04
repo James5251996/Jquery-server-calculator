@@ -12,9 +12,37 @@ app.use(express.static('server/public'))
 
 
 // this is the variable that hosts our total result
-let totalResult = {
-    total: 'test total',
-    historical: ['1+2', '1+4'],
+let allEquations = []
+
+let finalResult = [];
+
+
+// my add function
+function addInputs (num1, num2) {
+    let total = num1 + num2;
+    console.log(total);
+    return total;
+};
+
+// my subtract function
+function subtractInputs(num1, num2) {
+    let total = num1 - num2;
+    console.log(total);
+    return total;
+}
+
+// my multiply function
+function multiplyInputs(num1, num2) {
+    let total = num1 * num2
+    console.log(total)
+    return total
+}
+
+// my divide function
+function divideInputs(num1, num2) {
+    let total = num1 / num2;
+    console.log(total)
+    return total;
 }
 
 
@@ -23,14 +51,71 @@ let totalResult = {
 app.post('/calculator', (req, res) => {
     console.log('this is our post request.')
 
-    // in our post we need to be able to take the 2 inputs and then have it calculate the answers
+    // taking the all inputs object and seperating the properties into individual values to use for other functions
+
+    console.log('this is the object from the client', req.body)
+    let inputOne = Number(req.body.part1)
+    let operator = req.body.operator1
+    let inputTwo = Number(req.body.part2)
+
+    // this is a check for the individual parts work properly
+    console.log('my obhect as individual parts', inputOne, operator, inputTwo)
+
+    // next i will need to create a switch statement 
+    switch (operator) {
+        case '+':
+            total = addInputs(inputOne, inputTwo);
+            console.log('add fucntion worked');
+            break;
+        case '-':
+            total = subtractInputs(inputOne, inputTwo);
+            console.log('subtract function worked');
+            break;
+        case '*':
+            total = multiplyInputs(inputOne, inputTwo);
+            console.log('multiply function worked');
+            break;
+        case '/':
+            total = divideInputs(num1, num2);
+            console.log('divide funciton worked')
+            break;
+    };
+
+    // console.log to test that the switch worked.
+    console.log(total)
+
+
+
+
+    // add the total to the object and add total to a new variable. and add the variable back to object.
+    const allInputsToAddToArray = {
+        firstInput: inputOne,
+        operatorUsed: operator,
+        secondInput: inputTwo,
+        total: total,
+    }
+    
+    allEquations.push(allInputsToAddToArray);
+    console.log(allEquations)
+
+    // here i will be sending the result to a seperate variable to be called later.
+
+    finalResult.unshift(total)
+    console.log('the total is:', finalResult)
+
+    // in our post we need to be able to take the inputs and then have it calculate the answers
 
     res.sendStatus(201)
 })
 
 app.get('/calculator', (req, res) => {
-    console.log('get request was made!!')
-    res.send(totalResult)
+    console.log('get request was made!!');
+    res.send(allEquations);
+})
+
+app.get('/justfinalresult', (req, res) => {
+    console.log('second get request worked');
+    res.send(finalResult);
 })
 
 
