@@ -16,7 +16,9 @@ function onReady () {
     $('.equalBtn').on('click', sendInputs);
 
     // creating a listener for the clear button
-    $('#clearBtn').on('click', clearHistory)
+    $('#clearBtn').on('click', inputReset);
+
+    getAllEquations();
 
 
 }
@@ -80,7 +82,6 @@ function sendInputs () {
         console.log('the post worked!')
         getAllEquations();
         getFinalResult();
-        inputReset();
     }).catch((response) => {
         alert('post did not work')
     })

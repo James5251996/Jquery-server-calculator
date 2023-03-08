@@ -40,7 +40,7 @@ function multiplyInputs(num1, num2) {
 
 // my divide function
 function divideInputs(num1, num2) {
-    let total = num1 / num2;
+    let total = num1 / num2
     console.log(total)
     return total;
 }
@@ -76,7 +76,7 @@ app.post('/calculator', (req, res) => {
             console.log('multiply function worked');
             break;
         case '/':
-            total = divideInputs(num1, num2);
+            total = divideInputs(inputOne, inputTwo);
             console.log('divide funciton worked')
             break;
     };
